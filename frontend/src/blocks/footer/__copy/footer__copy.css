@@ -1,0 +1,27 @@
+.footer__copy {
+  font-family: 'Inter', Helvetica, sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 17px;
+  color: #545454;
+  width: 83.125%;
+  margin: 0 auto;
+  padding: 0 0 36px 0;
+}
+
+@media screen and (min-width: 768px) {
+  .footer__copy {
+    width: 700px;
+    padding: 0 0 48px 0;
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  .footer__copy {
+    font-size: 18px;
+    line-height: 22px;
+    width: 880px;
+    padding: 0 0 60px 0;
+  }
+}

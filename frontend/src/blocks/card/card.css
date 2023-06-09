@@ -1,0 +1,13 @@
+.card {
+  border-radius: 10px;
+  background-color: #ffffff;
+  border: none;
+  color: #000000;
+  position: relative;
+}
+
+@media screen and (min-width: 1280px) {
+  .card__item{
+    width: 282px;
+  }
+}

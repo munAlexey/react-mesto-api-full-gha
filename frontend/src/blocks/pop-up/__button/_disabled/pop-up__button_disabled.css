@@ -1,0 +1,28 @@
+.pop-up__button_disabled {
+  border: 1px solid #000000;
+  color: #000000;
+  opacity: 0.2;
+  background-color: transparent;
+  font-family: 'Inter', Helvetica, sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 17px;
+  padding: 0;
+  margin-top: 15px;
+  cursor: auto;
+}
+
+.pop-up__button_disabled:hover {
+  opacity: .2;
+}
+
+@media screen and (min-width: 768px) {
+  .pop-up__button_disabled {
+    width: 358px;
+    height: 50px;
+    margin-top: 18px;
+    font-size: 18px;
+    line-height: 22px;
+  }
+}

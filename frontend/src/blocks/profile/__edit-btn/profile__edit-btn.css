@@ -1,0 +1,40 @@
+.profile__edit-btn {
+  display: inline-flex;
+  box-sizing: border-box;
+  justify-content: center;
+  align-items: center;
+  width: 18px;
+  height: 18px;
+  border: 1px solid #ffffff;
+  margin: 34px 0 0 10px;
+  background-color: transparent;
+  cursor: pointer;
+}
+
+.profile__edit-btn:hover {
+  opacity: .6;
+}
+
+@media screen and (min-width: 768px) {
+  .profile__edit-btn {
+    width: 20px;
+    height: 20px;
+    margin: 8px 0 0 10px;
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  .profile__edit-btn {
+    width: 22px;
+    height: 22px;
+    margin: 13px 0 0 18px;
+  }
+}
+
+@media screen and (min-width: 1280px) {
+  .profile__edit-btn {
+    width: 24px;
+    height: 24px;
+    margin: 15px 0 0 18px;
+  }
+}

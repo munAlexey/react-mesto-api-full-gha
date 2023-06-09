@@ -1,0 +1,18 @@
+.button__image {
+  width: 16px;
+  height: 16px;
+  padding: 17px 0 13px;
+}
+
+
+@media screen and (min-width: 768px) {
+  .button__image {
+    padding-top: 10px;
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  .button__image {
+    padding: 0;
+  }
+}

@@ -1,0 +1,10 @@
+.pop-up_cards {
+  top: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(00, 00, 00, .9);
+  position: fixed;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

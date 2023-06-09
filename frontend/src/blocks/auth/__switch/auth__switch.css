@@ -1,0 +1,11 @@
+.auth__switch {
+  text-decoration: none;
+  color: #ffffff;
+  font-family: 'Inter', sans-serif;
+  text-align: center;
+  margin-top: 15px;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 17px;
+}

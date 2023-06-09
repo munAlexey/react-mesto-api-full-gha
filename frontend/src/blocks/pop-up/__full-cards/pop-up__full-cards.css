@@ -1,0 +1,9 @@
+.pop-up__full-cards {
+  margin: auto;
+  background-color: transparent;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  object-fit: cover;
+}

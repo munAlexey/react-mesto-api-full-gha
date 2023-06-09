@@ -1,0 +1,7 @@
+.auth__block {
+  display: flex;
+  margin: 0 auto;
+  flex-direction: column;
+  width: 880px;
+  align-items: center;
+}

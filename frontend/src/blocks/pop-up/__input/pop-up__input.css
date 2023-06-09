@@ -1,0 +1,31 @@
+.pop-up__input {
+  box-sizing: border-box;
+  margin-bottom: 30px;
+  width: 238px;
+  height: 27px;
+  border: none;
+  padding: 0 0 13px 0;
+  border-bottom: 1px solid rgba(00, 00, 00, .2);
+  font-family: 'Inter', Helvetica, sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 17px;
+  color: #000000;
+  outline: 0;
+}
+
+.pop-up__input::placeholder {
+  font-family: 'Inter', Helvetica, sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 17px;
+  color: #C4C4C4;
+}
+
+@media screen and (min-width: 768px) {
+  .pop-up__input {
+    width: 358px;
+  }
+}

@@ -1,0 +1,32 @@
+.cards__list {
+  padding: 0 0 48px 0;
+  list-style-type: none;
+  margin: 36px 5.9735% 0;
+  display: grid;
+  grid-template-columns: 100%;
+  gap: 20px;
+}
+
+@media screen and (min-width: 768px) {
+  .cards__list {
+    grid-template-columns: 1fr 1fr;
+    width: 700px;
+    margin: 40px auto 0;
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  .cards__list {
+    gap: 30px;
+    width: 880px;
+  }
+}
+
+@media screen and (min-width: 1280px) {
+  .cards__list {
+    margin: 50px auto 0;
+    padding-bottom: 66px;
+    grid-template-columns: repeat(3, 282px);
+    gap: 17px;
+  }
+}

@@ -1,0 +1,11 @@
+.pop-up__card-close-btn {
+  width: 20px;
+  height: 20px;
+}
+
+@media screen and (min-width: 768px) {
+  .pop-up__card-close-btn {
+    width: 32px;
+    height: 32px;
+  }
+}
