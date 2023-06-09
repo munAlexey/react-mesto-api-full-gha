@@ -11,6 +11,6 @@
 
 IP-адрес x.x.x.x
 
-Frontend https://...
+Frontend https://bubaleha.nomoredomains.monster
 
-Backend https://...
+Backend https://api.bubaleha.nomoredomains.rocks
