@@ -37,6 +37,11 @@ app.use(requestLogger);
 app.use(cors);
 
 app.use('/auth', authRouter);
+app.get('/crash-test', () => {
+  setTimeout(() => {
+    throw new Error('Сервер сейчас упадёт');
+  }, 0);
+});
 app.use(authorization);
 app.use('/users', userRouter);
 app.use('/cards', cardRouter);
