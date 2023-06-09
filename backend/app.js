@@ -2,6 +2,7 @@ const express = require('express');
 const mongoose = require('mongoose');
 const cookieParser = require('cookie-parser');
 const path = require('path');
+const { cors } = require('./middlewares/cors');
 const { authorization } = require('./middlewares/authorization');
 const { requestLogger, errorLogger } = require('./middlewares/logger');
 
@@ -30,6 +31,7 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use(requestLogger);
+app.use(cors);
 
 app.use('/auth', authRouter);
 app.use(authorization);
