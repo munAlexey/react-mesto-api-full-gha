@@ -1,7 +1,6 @@
 const { default: mongoose } = require('mongoose');
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
-const { SECRET_KEY } = require('../utils/constants');
 const User = require('../models/user');
 const NotFoundError = require('../errors/not-found-errors');
 const BadRequestError = require('../errors/bad-request');
@@ -51,7 +50,7 @@ module.exports.login = async (req, res, next) => {
     const matched = await bcrypt.compare(password, user.password);
 
     if (matched) {
-      const token = jwt.sign({ _id: user._id }, SECRET_KEY);
+      const token = jwt.sign({ _id: user._id }, process.env.JWT_SECRET);
       res.cookie('jwt', token, {
         maxAge: 3600,
         httpOnly: true,
