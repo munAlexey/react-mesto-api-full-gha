@@ -1,6 +1,6 @@
 const { Joi, celebrate, Segments } = require('celebrate');
-const { urlR } = require('../utils/constants');
 const express = require('express');
+const { urlR } = require('../utils/constants');
 
 const router = express.Router();
 
@@ -10,13 +10,22 @@ const {
 
 router.get('/', getUsers);
 
-router.get('/:userId', getUser);
+router.get('/:userId', celebrate({
+  [Segments.BODY]: Joi.object().keys({
+    userId: Joi.string().hex().length(24).required(),
+  }),
+}), getUser);
 
-router.patch('/me', patchMe);
+router.patch('/me', celebrate({
+  [Segments.BODY]: Joi.object().keys({
+    name: Joi.string().min(2).max(30).required(),
+    about: Joi.string().min(2).max(30).required(),
+  }),
+}), patchMe);
 
 router.patch('/me/avatar', celebrate({
   [Segments.BODY]: Joi.object().keys({
-    avatar: Joi.string().pattern(urlR),
+    avatar: Joi.string().pattern(urlR).required(),
   }),
 }), patchAvatar);
 

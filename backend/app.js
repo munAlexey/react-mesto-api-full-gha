@@ -4,10 +4,10 @@ require('dotenv').config();
 const express = require('express');
 const mongoose = require('mongoose');
 const cookieParser = require('cookie-parser');
-const path = require('path');
 const { cors } = require('./middlewares/cors');
 const { authorization } = require('./middlewares/authorization');
 const { requestLogger, errorLogger } = require('./middlewares/logger');
+const NotFoundError = require('./errors/not-found-errors');
 
 const {
   ERROR_DEFAULT,
@@ -31,8 +31,6 @@ mongoose.connect('mongodb://127.0.0.1:27017/mestodb', {
 app.use(express.json());
 app.use(cookieParser());
 
-app.use(express.static(path.join(__dirname, 'public')));
-
 app.use(requestLogger);
 app.use(cors);
 
@@ -45,8 +43,8 @@ app.get('/crash-test', () => {
 app.use(authorization);
 app.use('/users', userRouter);
 app.use('/cards', cardRouter);
-app.use((req, res) => {
-  res.send(new Error('Роутер не найден'));
+app.use((req, res, next) => {
+  next(new NotFoundError('Роутер не найден'));
 });
 
 app.use(errorLogger);
