@@ -30,7 +30,9 @@ module.exports.deleteCard = async (req, res, next) => {
   const userId = req.user._id;
   const card = req.params.cardId;
 
-  Card.findById(card)
+  Card.findById(card).orFail(() => {
+    throw new NotFoundError('NotFound');
+  })
     .then((foundCard) => {
       if (userId !== foundCard.owner.id) {
         next(new BadRequestError('Нельзя удалять чужие карточки.'));
@@ -40,21 +42,13 @@ module.exports.deleteCard = async (req, res, next) => {
           throw new NotFoundError('NotFound');
         })
         .then((result) => {
-          if (card.card !== userId) {
-            res.send(result);
-          }
+          res.send(result);
         }).catch((err) => {
-          if (err.message === 'NotFound') {
-            next(new NotFoundError('Переданы некорректные данные.'));
-          } else if (err.name === 'CastError') {
-            next(new BadRequestError('Переданы некорректные данные.'));
-          } else { next(err); }
+          next(err);
         });
     })
     .catch((err) => {
-      if (err.message === 'NotFound') {
-        next(new NotFoundError('Карточка или пользователь не найден или был запрошен несуществующий роут.'));
-      } else if (err.name === 'CastError') {
+      if (err.name === 'CastError') {
         next(new BadRequestError('Переданы некорректные данные.'));
       } else { next(err); }
     });
@@ -70,9 +64,7 @@ module.exports.addLike = (req, res, next) => Card.findByIdAndUpdate(
   }).populate('owner')
   .then(() => res.send({ message: 'Вы поставили лайк' }))
   .catch((err) => {
-    if (err.message === 'NotFound') {
-      next(new NotFoundError('Карточка или пользователь не найден или был запрошен несуществующий роут.'));
-    } else if ((err.name === 'CastError')) {
+    if ((err.name === 'CastError')) {
       next(new BadRequestError('Переданы некорректные данные для постановки/снятии лайка.'));
     } else {
       next(err);

@@ -1,4 +1,3 @@
-const { default: mongoose } = require('mongoose');
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 const User = require('../models/user');
@@ -118,10 +117,6 @@ module.exports.patchAvatar = async (req, res, next) => {
 
 module.exports.getUser = async (req, res, next) => {
   const { userId } = req.params;
-
-  if (!mongoose.isValidObjectId(userId)) {
-    next(new BadRequestError('Переданы некорректные данные.'));
-  }
 
   await User.findById(userId).orFail(() => {
     throw new NotFoundError('Пользователь по указанному _id не найден');

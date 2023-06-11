@@ -1,7 +1,4 @@
 const jwt = require('jsonwebtoken');
-const {
-  SECRET_KEY,
-} = require('../utils/constants');
 const NotFoundError = require('../errors/not-found-errors');
 const Unauthorized = require('../errors/unauthorized');
 
@@ -12,7 +9,7 @@ module.exports.authorization = (req, res, next) => {
     return;
   }
   try {
-    const payload = jwt.verify(token, SECRET_KEY);
+    const payload = jwt.verify(token, process.env.JWT_SECRET);
     req.user = payload;
     next();
   } catch (error) {
