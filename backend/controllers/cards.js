@@ -1,6 +1,7 @@
 const Card = require('../models/card');
 const NotFoundError = require('../errors/not-found-errors');
 const BadRequestError = require('../errors/bad-request');
+const Forbidden = require('../errors/forbidden');
 
 module.exports.getCards = async (req, res, next) => {
   Card.find({}).populate(['owner', 'likes'])
@@ -35,7 +36,7 @@ module.exports.deleteCard = async (req, res, next) => {
   })
     .then((foundCard) => {
       if (userId !== foundCard.owner.id) {
-        next(new BadRequestError('Нельзя удалять чужие карточки.'));
+        next(new Forbidden('Нельзя удалять чужие карточки.'));
       }
       Card.findByIdAndDelete(foundCard)
         .orFail(() => {
